@@ -1,0 +1,4 @@
+his command should work:
+xbps-install -Su base-devel
+
+Instructions for Void Linux Build Environment:
