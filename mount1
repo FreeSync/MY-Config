@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+
+sudo mount -t ntfs-3g -o ro /dev/nvme0n1p4 /media/Arman/WIN_PART
