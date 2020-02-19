@@ -1,30 +1,30 @@
-URxvt.perl-ext-common: selection-to-clipboard
-URxvt.keysym.Shift-Control-V: eval:paste_clipboard
-URxvt.keysym.Shift-Control-C: eval:selection_to_clipboard
+! xcalc settings
+# include ".config/xresources.d/xcalc/xcalc.conf"
+
+! urxvt colours 
+# include ".config/xresources.d/xcolours/antix.conf"
 
 
+URxvt*font: xft:Monaco:size=9
 
 
+urxvt*perl-lib:         /usr/lib/urxvt/perl/
+urxvt*perl-ext-common:  default,matcher
+urxvt*urlLauncher:      /usr/bin/jumanji
+urxvt*matcher.button:   1
+#urxvt*fading:           50
+#urxvt*fadeColor:        #000000
 
+Xft*dpi:                96
+Xft*antialias:          true
+Xft*hinting:            full
 
-URxvt.font:	xft:monaco:size=9
+urxvt*background:       rgba:0000/0000/0000/cccc
 
-URxvt.geometry: 135x26
-
-
-urxvt*termName:         rxvt
-urxvt*background:       #000000
-urxvt*foreground:       #cccccc
-
-
-! -----------------------------------------------------------------------------
-! File: gruvbox-dark.xresources
-! Description: Retro groove colorscheme generalized
-! Author: morhetz <morhetz@gmail.com>
-! Source: https://github.com/morhetz/gruvbox-generalized
-! Last Modified: 6 Sep 2014
-! -----------------------------------------------------------------------------
-
+URxvt.transparent:   true
+URxvt.tintColor:     white
+URxvt.shading:       20 
+ 
 ! hard contrast: *background: #1d2021
 *background: #282828
 ! soft contrast: *background: #32302f
@@ -52,3 +52,4 @@ urxvt*foreground:       #cccccc
 *color14: #8ec07c
 ! LightGrey + White
 *color7:  #a89984
+*color15: #ebdbb2
