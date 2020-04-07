@@ -1,0 +1,6 @@
+#! /bin/sh
+sudo apt-get install build-essential module-assistant
+
+sudo m-a prepare
+
+sudo /etc/init.d/vboxdrv setup
