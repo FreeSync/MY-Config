@@ -607,5 +607,6 @@ awful.spawn.with_shell("compton")
 awful.spawn.with_shell("nitrogen --restore")
 awful.spawn.with_shell("xdman")
 awful.spawn.with_shell("xrdb ~/st/.Xdefaults")
+awful.spawn.with_shell("cmst")
 
 
