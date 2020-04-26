@@ -1,0 +1,31 @@
+! =============================================
+! Color Setting
+! =============================================
+rofi.color-enabled: true
+rofi.color-window: argb:B3000000
+!914878c0, #000000, #000000
+!			Odd Entries	Font Color	Even Entries	Selected BG	Selected FG
+rofi.color-normal: 	#50111111,	#C0C0C0,	#501a1a1a,	#006078,	#ffffff
+!rofi.color-active: 	#181830,	#ff48d8,	#181830,	#006078,	#ff48d8
+!rofi.color-urgent: 	#181830,	#ff48d8,	#181830,	#006078,	#ff48d8
+
+
+! =============================================
+rofi.font:		Monaco\ 15
+
+
+
+rofi.eh: 		1
+rofi.lines: 		5
+rofi.hide-scrollbar:	true
+
+rofi.padding:		10
+rofi.width:		700
+rofi.height:		100
+
+
+
+
+
+
+
