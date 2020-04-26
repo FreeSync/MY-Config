@@ -330,12 +330,12 @@ globalkeys = gears.table.join(
 
     -- Prompt
     awful.key({ modkey },            "r",     function () 
-    awful.util.spawn("dmenu_run -l 5 -c -lr 2 -d 0.1 -fn 'Inconsolata for Powerline-10'") end,
+    awful.util.spawn(" rofi -show drun -show-icons") end,
                {description = "show rofi", group = "launcher"}),
     --firefox
      
     awful.key({ modkey },            "z",     function () 
-    awful.util.spawn("firefox") end,
+    awful.util.spawn("brave") end,
                {description = "firefox", group = "applications"}),  
                
                    --pcmanfm
@@ -523,7 +523,7 @@ awful.rules.rules = {
 
     -- Add titlebars to normal clients and dialogs
     { rule_any = {type = { "normal", "dialog" }
-      }, properties = { titlebars_enabled = true }
+      }, properties = { titlebars_enabled = false }
     },
 
     -- Set Firefox to always map on the tag named "2" on screen 1.
@@ -597,7 +597,15 @@ client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_n
 -- }}}
 --
 --
---
+
+
+
+
+
+
+
+--Lain
+local lain = require("lain")
 --
 --
 --
@@ -607,4 +615,4 @@ awful.spawn.with_shell("compton")
 awful.spawn.with_shell("nitrogen --restore")
 awful.spawn.with_shell("xdman")
 awful.spawn.with_shell("xrdb ~/st/.Xdefaults")
-awful.spawn.with_shell("cmst")
+
