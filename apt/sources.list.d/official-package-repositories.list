@@ -1,0 +1,8 @@
+deb http://mirror.xeonbd.com/linuxmint.com-repo tricia main upstream import backport 
+
+deb http://mirror.xeonbd.com/ubuntu-archive bionic main restricted universe multiverse
+deb http://mirror.xeonbd.com/ubuntu-archive bionic-updates main restricted universe multiverse
+deb http://mirror.xeonbd.com/ubuntu-archive bionic-backports main restricted universe multiverse
+
+deb http://security.ubuntu.com/ubuntu/ bionic-security main restricted universe multiverse
+deb http://archive.canonical.com/ubuntu/ bionic partner
