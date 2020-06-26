@@ -1,0 +1,9 @@
+
+xmonad.hs:7:47: error:
+    Module ‘XMonad.Hooks.ManageDocks’ does not export ‘dockStartupHook’
+
+xmonad.hs:7:77: error:
+    Module
+    ‘XMonad.Hooks.ManageDocks’
+    does not export
+    ‘ToogleStruts(..)’
