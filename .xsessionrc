@@ -1,0 +1,31 @@
+#!/bin/bash
+
+# Load resources
+
+xrdb -merge .Xresources
+
+# Set up an icon tray
+stalonetray &
+
+# Fire up apps
+
+xscreensaver -no-splash &
+
+if [ -x /usr/bin/nm-applet ] ; then
+   nm-applet --sm-disable &
+fi
+
+exec xmonad
+
+LC_NUMERIC=bn_BD.UTF-8
+LC_MONETARY=bn_BD.UTF-8
+LC_PAPER=bn_BD.UTF-8
+LC_NAME=bn_BD.UTF-8
+LC_ADDRESS=bn_BD.UTF-8
+LC_TELEPHONE=bn_BD.UTF-8
+LC_MEASUREMENT=bn_BD.UTF-8
+LC_IDENTIFICATION=bn_BD.UTF-8
+LC_TIME=en_US.UTF-8
+PAPERSIZE=a4
+LANGUAGE=en_US
+LANG=en_US.UTF-8

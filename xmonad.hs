@@ -11,23 +11,16 @@ import XMonad
 import Data.Monoid
 import System.Exit
 
-
-import XMonad.Hooks.ManageDocks
-
-
 import XMonad.Util.Run
 import XMonad.Util.SpawnOnce
-
-
-
-
+import XMonad.Hooks.ManageDocks
 import qualified XMonad.StackSet as W
 import qualified Data.Map        as M
 
 -- The preferred terminal program, which is used in a binding below and by
 -- certain contrib modules.
 --
-myTerminal      = "mate-terminal"
+myTerminal      = "gnome-terminal"
 
 -- Whether focus follows the mouse pointer.
 myFocusFollowsMouse :: Bool
@@ -39,7 +32,7 @@ myClickJustFocuses = False
 
 -- Width of the window border in pixels.
 --
-myBorderWidth   = 1
+myBorderWidth   = 2
 
 -- modMask lets you specify which modkey you want to use. The default
 -- is mod1Mask ("left alt").  You may also consider using mod3Mask
@@ -75,16 +68,14 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     -- launch dmenu
     , ((modm,               xK_d     ), spawn "rofi -show drun")
 
--- launch firefox
+
+    -- launch dmenu
     , ((modm,               xK_z     ), spawn "firefox")
 
--- launch pcmanfm
+
+
+    -- launch dmenu
     , ((modm,               xK_g     ), spawn "pcmanfm")
-
-
-
-
-
 
 
 
@@ -269,17 +260,16 @@ myLogHook = return ()
 myStartupHook :: X ()
 myStartupHook = do
           spawnOnce "nitrogen --restore &"
-	  spawnOnce "compton"
-
-
+          spawnOnce "compton"
+	  spawnOnce "volumeicon &"
 ------------------------------------------------------------------------
 -- Now run xmonad with all the defaults we set up.
 
 -- Run xmonad with the settings you specify. No need to modify this.
 --
 main = do
-  xmproc <- spawnPipe "xmobar -x 0 /home/arman/.config/xmobar/xmobarrc"
-  xmonad $docks defaults
+	xmproc <- spawnPipe "xmobar -x 0 ~/.config/xmobar/xmobarrc"
+	xmonad $ docks defaults
 
 -- A structure containing your configuration settings, overriding
 -- fields in the default config. Any you don't override, will
