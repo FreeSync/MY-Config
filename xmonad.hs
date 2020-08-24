@@ -1,4 +1,4 @@
---
+---
 -- xmonad example config file.
 --
 -- A template showing all available configuration hooks,
@@ -8,9 +8,16 @@
 --
 
 import XMonad
+import XMonad.Hooks.DynamicLog
+
+
+
 import Data.Monoid
 import System.Exit
 
+
+
+import XMonad.Layout.Spacing
 import XMonad.Util.Run
 import XMonad.Util.SpawnOnce
 import XMonad.Hooks.ManageDocks
@@ -20,7 +27,7 @@ import qualified Data.Map        as M
 -- The preferred terminal program, which is used in a binding below and by
 -- certain contrib modules.
 --
-myTerminal      = "gnome-terminal"
+myTerminal      = "alacritty"
 
 -- Whether focus follows the mouse pointer.
 myFocusFollowsMouse :: Bool
@@ -70,7 +77,14 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
 
 
     -- launch dmenu
-    , ((modm,               xK_z     ), spawn "firefox")
+    , ((modm,               xK_z     ), spawn "brave-browser")
+
+
+
+
+-- launch dmenu
+    , ((modm,               xK_a     ), spawn "emacs")
+
 
 
 
@@ -198,7 +212,7 @@ myMouseBindings (XConfig {XMonad.modMask = modm}) = M.fromList $
 myLayout = avoidStruts (tiled ||| Mirror tiled ||| Full)
   where
      -- default tiling algorithm partitions the screen into two panes
-     tiled   = Tall nmaster delta ratio
+     tiled   = smartSpacing 5 $ Tall nmaster delta ratio
 
      -- The default number of windows in the master pane
      nmaster = 1
@@ -261,15 +275,14 @@ myStartupHook :: X ()
 myStartupHook = do
           spawnOnce "nitrogen --restore &"
           spawnOnce "compton"
-	  spawnOnce "volumeicon &"
+	  spawnOnce "polybar example"
+	  spawnOnce "nm-applet"
 ------------------------------------------------------------------------
 -- Now run xmonad with all the defaults we set up.
 
 -- Run xmonad with the settings you specify. No need to modify this.
 --
-main = do
-	xmproc <- spawnPipe "xmobar -x 0 ~/.config/xmobar/xmobarrc"
-	xmonad $ docks defaults
+main = xmonad $ docks defaults
 
 -- A structure containing your configuration settings, overriding
 -- fields in the default config. Any you don't override, will
