@@ -62,7 +62,7 @@ myWorkspaces    = ["1","2","3","4","5","6","7","8","9"]
 -- Border colors for unfocused and focused windows, respectively.
 --
 myNormalBorderColor  = "#dddddd"
-myFocusedBorderColor = "#ff0000"
+myFocusedBorderColor = "#d65d0e"
 
 ------------------------------------------------------------------------
 -- Key bindings. Add, modify or remove key bindings here.
@@ -77,7 +77,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
 
 
     -- launch dmenu
-    , ((modm,               xK_z     ), spawn "brave-browser")
+    , ((modm,               xK_z     ), spawn "firefox")
 
 
 
@@ -275,15 +275,17 @@ myStartupHook :: X ()
 myStartupHook = do
           spawnOnce "nitrogen --restore &"
           spawnOnce "compton"
-	  spawnOnce "polybar example"
+	  --spawnOnce "polybar example"
 	  spawnOnce "nm-applet"
 ------------------------------------------------------------------------
 -- Now run xmonad with all the defaults we set up.
 
 -- Run xmonad with the settings you specify. No need to modify this.
 --
-main = xmonad $ docks defaults
-
+main = do
+            xmproc <- spawnPipe "xmobar -x 0 ~/.config/xmobar/xmobarrc"
+   
+            xmonad $ docks defaults
 -- A structure containing your configuration settings, overriding
 -- fields in the default config. Any you don't override, will
 -- use the defaults defined in xmonad/XMonad/Config.hs
