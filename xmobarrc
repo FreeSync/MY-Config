@@ -1,9 +1,9 @@
-Config { font = "xft: Ubuntu Mono:pixelsize=12:antialias=true:hinting=true"
+Config { font = "xft: Ubuntu Mono:pixelsize=13:antialias=true:hinting=true"
        , additionalFonts = []
-       , borderColor = "#32302f"
+       , borderColor = "#073642"
        , border = TopB
-       , bgColor = "#32302f"
-       , fgColor = "#fbf1c7"
+       , bgColor = "#073642"
+       , fgColor = "grey"
        , alpha = 255
        , position = Top
        , textOffset = -1
