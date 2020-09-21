@@ -61,7 +61,7 @@ myWorkspaces    = ["1","2","3","4","5","6","7","8","9"]
 
 -- Border colors for unfocused and focused windows, respectively.
 --
-myNormalBorderColor  = "#dddddd"
+myNormalBorderColor  = "#333333"
 myFocusedBorderColor = "#d65d0e"
 
 ------------------------------------------------------------------------
@@ -275,7 +275,7 @@ myStartupHook :: X ()
 myStartupHook = do
           spawnOnce "nitrogen --restore &"
           spawnOnce "compton"
-	  --spawnOnce "polybar example"
+	  spawnOnce "xdman"
 	  spawnOnce "nm-applet"
 ------------------------------------------------------------------------
 -- Now run xmonad with all the defaults we set up.
