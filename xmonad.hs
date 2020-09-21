@@ -277,6 +277,7 @@ myStartupHook = do
           spawnOnce "compton"
 	  spawnOnce "xdman"
 	  spawnOnce "nm-applet"
+	  spawnOnce "pnmixer"
 ------------------------------------------------------------------------
 -- Now run xmonad with all the defaults we set up.
 
