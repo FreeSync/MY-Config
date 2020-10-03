@@ -1,15 +1,26 @@
-﻿
+---
+-- xmonad example config file.
+--
+-- A template showing all available configuration hooks,
+-- and how to override the defaults in your own xmonad.hs conf file.
+--
+-- Normally, you'd only override those defaults you care about.
 --
 
 import XMonad
+import XMonad.Hooks.DynamicLog
+
+
+
 import Data.Monoid
 import System.Exit
-import XMonad.Hooks.ManageDocks (avoidStruts, dockStartupHook, manageDocks, ToogleStruts(..)) 
 
 
+
+import XMonad.Layout.Spacing
 import XMonad.Util.Run
 import XMonad.Util.SpawnOnce
-
+import XMonad.Hooks.ManageDocks
 import qualified XMonad.StackSet as W
 import qualified Data.Map        as M
 
@@ -50,8 +61,8 @@ myWorkspaces    = ["1","2","3","4","5","6","7","8","9"]
 
 -- Border colors for unfocused and focused windows, respectively.
 --
-myNormalBorderColor  = "#dddddd"
-myFocusedBorderColor = "#F19506"
+myNormalBorderColor  = "#333333"
+myFocusedBorderColor = "#d65d0e"
 
 ------------------------------------------------------------------------
 -- Key bindings. Add, modify or remove key bindings here.
@@ -61,23 +72,24 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     -- launch a terminal
     [ ((modm .|. shiftMask, xK_Return), spawn $ XMonad.terminal conf)
 
-
- 
+    -- launch dmenu
+    , ((modm,               xK_d     ), spawn "rofi -show drun -show-icons")
 
 
     -- launch dmenu
-    , ((modm,               xK_d     ), spawn "rofi -show drun")
-
-
--- launch dmenu
-    , ((modm,               xK_z     ), spawn "brave-browser")
+    , ((modm,               xK_z     ), spawn "chromium")
 
 
 
 
 -- launch dmenu
-    , ((modm,               xK_g     ), spawn "spacefm")
+    , ((modm,               xK_a     ), spawn "emacs")
 
+
+
+
+    -- launch dmenu
+    , ((modm,               xK_g     ), spawn "pcmanfm")
 
 
 
@@ -200,7 +212,7 @@ myMouseBindings (XConfig {XMonad.modMask = modm}) = M.fromList $
 myLayout = avoidStruts (tiled ||| Mirror tiled ||| Full)
   where
      -- default tiling algorithm partitions the screen into two panes
-     tiled   = Tall nmaster delta ratio
+     tiled   = smartSpacing 5 $ Tall nmaster delta ratio
 
      -- The default number of windows in the master pane
      nmaster = 1
@@ -259,10 +271,15 @@ myLogHook = return ()
 -- per-workspace layout choices.
 --
 -- By default, do nothing.
+myStartupHook :: X ()
 myStartupHook = do
-	spawnOnce "nitrogen --restore &"
-	spawnOnce "compton &"
-	spawnOnce "launch.sh"
+          spawnOnce "nitrogen --restore &"
+          spawnOnce "compton"
+	  spawnOnce "xdman"
+	  spawnOnce "nm-applet"
+	  spawnOnce "pnmixer"
+	  spawnOnce "launch.sh"
+	  spawnOnce "setxkbmap -layout us,bd -variant ,probhat -option 'grp:lalt_lshift_toggle'"
 
 ------------------------------------------------------------------------
 -- Now run xmonad with all the defaults we set up.
@@ -270,9 +287,11 @@ myStartupHook = do
 -- Run xmonad with the settings you specify. No need to modify this.
 --
 main = do
-  xmproc <- spawnPipe "xmobar -x 0 /home/arman/.config/xmobar/xmobarrc"
-  xmonad $docks defaults
-
+   xmonad $docks defaults
+-- A structure containing your configuration settings, overriding
+-- fields in the default config. Any you don't override, will
+-- use the defaults defined in xmonad/XMonad/Config.hs
+--
 -- No need to modify this.
 --
 defaults = def {
