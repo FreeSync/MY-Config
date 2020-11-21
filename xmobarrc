@@ -1,9 +1,10 @@
-Config { font = "xft: Ubuntu Mono:pixelsize=13:antialias=true:hinting=true"
+
+Config { font = "xft: Fira Code:pixelsize=10:antialias=true:hinting=true"
        , additionalFonts = []
-       , borderColor = "#073642"
+       , borderColor = "#30312E"
        , border = TopB
-       , bgColor = "#073642"
-       , fgColor = "grey"
+       , bgColor = "#30312E"
+       , fgColor = "#FFFFFF"
        , alpha = 255
        , position = Top
        , textOffset = -1
@@ -22,17 +23,17 @@ Config { font = "xft: Ubuntu Mono:pixelsize=13:antialias=true:hinting=true"
                                           "--low","lightblue"] 36000
                     , Run Network "eth0" ["-L","0","-H","32",
                                           "--normal","green","--high","red"] 10
-                    , Run Network "eth1" ["-L","0","-H","32",
-                                          "--normal","green","--high","red"] 10
+                    , Run Network "wlx18a6f7151bea" [ "-t", "<essid>" ] 10 
+
                     , Run Cpu ["-L","3","-H","50",
                                "--normal","green","--high","red"] 10
-                    , Run Memory ["-t","Mem: <usedratio>%"] 10
+                    , Run Memory ["-t","Memory>> <usedratio>%"] 10
                     , Run Swap [] 10
                     , Run Com "uname" ["-s","-r"] "" 36000
                     , Run Date "%a %b %_d %Y %H:%M:%S" "date" 10
                     ]
        , sepChar = "%"
        , alignSep = "}{"
-       , template = "%cpu% | %memory% * %swap% | %eth0% - %eth1% }\
+       , template = "<fc=#ED6443>%cpu%</fc> | <fc=#ee9a00>%memory%</fc>| * %swap% | %eth0% - %wlan0wi% }\
                     \{ <fc=#ee9a00>%date%</fc>| %EGPF% | %uname%"
        }
