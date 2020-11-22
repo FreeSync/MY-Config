@@ -16,9 +16,9 @@ import Data.Monoid
 import System.Exit
 
 
-
+import Graphics.X11.ExtraTypes.XF86
 import XMonad.Layout.Spacing
-import XMonad.Util.Run
+import XMonad.Util.Run (spawnPipe)
 import XMonad.Util.SpawnOnce
 import XMonad.Hooks.ManageDocks
 import qualified XMonad.StackSet as W
@@ -27,7 +27,7 @@ import qualified Data.Map        as M
 -- The preferred terminal program, which is used in a binding below and by
 -- certain contrib modules.
 --
-myTerminal      = "alacritty"
+myTerminal      = "st"
 
 -- Whether focus follows the mouse pointer.
 myFocusFollowsMouse :: Bool
@@ -39,7 +39,7 @@ myClickJustFocuses = False
 
 -- Width of the window border in pixels.
 --
-myBorderWidth   = 2
+myBorderWidth   = 3
 
 -- modMask lets you specify which modkey you want to use. The default
 -- is mod1Mask ("left alt").  You may also consider using mod3Mask
@@ -73,7 +73,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     [ ((modm .|. shiftMask, xK_Return), spawn $ XMonad.terminal conf)
 
     -- launch dmenu
-    , ((modm,               xK_d     ), spawn "rofi -show drun -show-icons")
+    , ((modm,               xK_d     ), spawn "dmenu_run")
 
 
     -- launch dmenu
@@ -280,14 +280,27 @@ myStartupHook = do
 	  spawnOnce "pnmixer"
 ------------------------------------------------------------------------
 -- Now run xmonad with all the defaults we set up.
+--Command to Launch The bar
+myBar = "xmobar"
+myPP = defaultPP { ppCurrent = xmobarColor "#0099CC" "" . wrap "[" "]"
+                 , ppTitle   = xmobarColor "#FF9900" "" . shorten 80
+                 , ppVisible = wrap "(" ")"
+                 , ppUrgent  = xmobarColor "red" "yellow"
+                 , ppSep     = " | "
+                 }
+
+-- Key binding to toggle the gap for the bar.
+toggleStrutsKey XConfig {XMonad.modMask = modMask} = (modMask, xK_b)
+
+------------------------------------------------------------------------
+-- Now run xmonad with all the defaults we set up.
 
 -- Run xmonad with the settings you specify. No need to modify this.
 --
-main = do
-            xmproc <- spawnPipe "xmobar -x 0 ~/.config/xmobar/xmobarrc"
-   
-            xmonad $ docks defaults
--- A structure containing your configuration settings, overriding
+main = xmonad =<< statusBar myBar myPP toggleStrutsKey defaults
+
+
+--
 -- fields in the default config. Any you don't override, will
 -- use the defaults defined in xmonad/XMonad/Config.hs
 --
