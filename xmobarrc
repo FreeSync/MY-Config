@@ -1,8 +1,8 @@
 
-Config { font = "xft: Fira Code:pixelsize=10:antialias=true:hinting=true"
+Config { font = "xft: Fira Code:pixelsize=12:antialias=true:hinting=true"
 
 bgColor =      "black"
-   , fgColor =      "#646464"
+   , fgColor =      "white"
    , position =     Top
    , border =       BottomB
    , borderColor =  "#646464"
@@ -10,7 +10,7 @@ bgColor =      "black"
    -- layout
    , sepChar =  "%"   -- delineator between plugin names and straight text
    , alignSep = "}{"  -- separator between left-right alignment
-   , template = " %StdinReader% | <fc=#ee9a00>%date%</fc> ||  %multicpu%  ||  %coretemp%  ||  %memory%  ||  %dynnetwork%  }{ <<<<%VGHS%>>>> || <<<<%kbd%>>>> "
+   , template = " %StdinReader% | %multicpu% | %coretemp% | %memory% | %dynnetwork% }{ <<<<%VGHS%>>>> || <<<<%kbd%>>>>}{<fc=#ee9a00>%date%</fc> "
 
    -- general behavior
    , lowerOnStart =     True    -- send to bottom of window stack on start
