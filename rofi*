@@ -15,15 +15,15 @@ rofi.color-normal: 	#50111111,	#C0C0C0,	#501a1a1a,	#006078,	#ffffff
 rofi.font:		Roboto\ 20
 
 rofi.eh: 		1
-rofi.lines: 		20
+rofi.lines: 		10
 rofi.hide-scrollbar:	true
 
 rofi.padding:		10
-rofi.width:		500
+rofi.width:		1000
 rofi.height:		100
 
 rofi.monitor:		-4
 
 rofi.location:		5
-rofi.yoffset:		-28
-rofi.xoffset:		-1420
+rofi.yoffset:		-300
+rofi.xoffset:		-400
