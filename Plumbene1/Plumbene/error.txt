@@ -1,0 +1,23 @@
+ mpirun -np 6 lmp_mpi < plumbene.mp
+LAMMPS (29 Oct 2020)
+Reading data file ...
+  triclinic box = (0.0000000 0.0000000 0.0000000) to (15.588000 13.499604 5.0000000) with tilt (-7.7940000 0.0000000 0.0000000)
+  3 by 2 by 1 MPI processor grid
+  reading atoms ...
+  18 atoms
+  read_data CPU = 0.001 seconds
+Replicating atoms ...
+  triclinic box = (0.0000000 0.0000000 0.0000000) to (77.940000 107.99683 5.0000000) with tilt (-62.352000 0.0000000 0.0000000)
+ERROR: Triclinic box skew is too large (../domain.cpp:216)
+Last command: replicate       5 8 1
+--------------------------------------------------------------------------
+Primary job  terminated normally, but 1 process returned
+a non-zero exit code. Per user-direction, the job has been aborted.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+mpirun detected that one or more processes exited with non-zero status, thus causing
+the job to be terminated. The first process to do so was:
+
+  Process name: [[24722,1],5]
+  Exit code:    1
+
