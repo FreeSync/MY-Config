@@ -51,6 +51,9 @@ end
 -- Themes define colours, icons, font and wallpapers.
 beautiful.init(gears.filesystem.get_themes_dir() .. "default/theme.lua")
 
+
+
+
 -- This is used later as the default terminal and editor to run.
 terminal = "st"
 editor = os.getenv("EDITOR") or "editor"
@@ -65,19 +68,19 @@ modkey = "Mod4"
 
 -- Table of layouts to cover with awful.layout.inc, order matters.
 awful.layout.layouts = {
-    awful.layout.suit.floating,
+   -- awful.layout.suit.floating,
     awful.layout.suit.tile,
-    awful.layout.suit.tile.left,
-    awful.layout.suit.tile.bottom,
-    awful.layout.suit.tile.top,
-    awful.layout.suit.fair,
-    awful.layout.suit.fair.horizontal,
-    awful.layout.suit.spiral,
-    awful.layout.suit.spiral.dwindle,
-    awful.layout.suit.max,
-    awful.layout.suit.max.fullscreen,
-    awful.layout.suit.magnifier,
-    awful.layout.suit.corner.nw,
+   -- awful.layout.suit.tile.left,
+   -- awful.layout.suit.tile.bottom,
+   -- awful.layout.suit.tile.top,
+   -- awful.layout.suit.fair,
+   -- awful.layout.suit.fair.horizontal,
+   -- awful.layout.suit.spiral,
+   -- awful.layout.suit.spiral.dwindle,
+   -- awful.layout.suit.max,
+   -- awful.layout.suit.max.fullscreen,
+   -- awful.layout.suit.magnifier,
+   -- awful.layout.suit.corner.nw,
     -- awful.layout.suit.corner.ne,
     -- awful.layout.suit.corner.sw,
     -- awful.layout.suit.corner.se,
@@ -187,7 +190,7 @@ awful.screen.connect_for_each_screen(function(s)
     set_wallpaper(s)
 
     -- Each screen has its own tag table.
-    awful.tag({ "1", "2", "3", "4", "5", "6", "7", "8", "9" }, s, awful.layout.layouts[1])
+    awful.tag({ "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", " 刺   " }, s, awful.layout.layouts[1])
 
     -- Create a promptbox for each screen
     s.mypromptbox = awful.widget.prompt()
@@ -221,7 +224,6 @@ awful.screen.connect_for_each_screen(function(s)
         layout = wibox.layout.align.horizontal,
         { -- Left widgets
             layout = wibox.layout.fixed.horizontal,
-            mylauncher,
             s.mytaglist,
             s.mypromptbox,
         },
@@ -292,11 +294,11 @@ globalkeys = gears.table.join(
         {description = "go back", group = "client"}),
 
     -- Standard program
-    awful.key({ modkey,           }, "Return", function () awful.spawn(terminal) end,
+    awful.key({ modkey, "Shift"           }, "Return", function () awful.spawn(terminal) end,
               {description = "open a terminal", group = "launcher"}),
     awful.key({ modkey, "Control" }, "r", awesome.restart,
               {description = "reload awesome", group = "awesome"}),
-    awful.key({ modkey, "Shift"   }, "e", awesome.quit,
+    awful.key({ modkey, "Shift"   }, "q", awesome.quit,
               {description = "quit awesome", group = "awesome"}),
 
     awful.key({ modkey,           }, "l",     function () awful.tag.incmwfact( 0.05)          end,
@@ -329,8 +331,8 @@ globalkeys = gears.table.join(
               {description = "restore minimized", group = "client"}),
 
     -- Prompt
-    awful.key({ modkey },            "r",     function () 
-    awful.util.spawn("dmenu_run -l 5 -c -lr 2 -d 0.1 -fn 'Monaco'") end,
+    awful.key({ modkey },            "d",     function () 
+    awful.util.spawn("rofi -show drun -show-icons" ) end,
                {description = "show rofi", group = "launcher"}),
     --firefox
      
@@ -369,7 +371,7 @@ clientkeys = gears.table.join(
             c:raise()
         end,
         {description = "toggle fullscreen", group = "client"}),
-    awful.key({ modkey, "Shift"   }, "q",      function (c) c:kill()                         end,
+    awful.key({ modkey, "Shift"   }, "c",      function (c) c:kill()                         end,
               {description = "close", group = "client"}),
     awful.key({ modkey, "Control" }, "space",  awful.client.floating.toggle                     ,
               {description = "toggle floating", group = "client"}),
@@ -479,8 +481,8 @@ root.keys(globalkeys)
 awful.rules.rules = {
     -- All clients will match this rule.
     { rule = { },
-      properties = { border_width = beautiful.border_width,
-                     border_color = beautiful.border_normal,
+      properties = { border_width = 2,
+                     border_color = beautiful.border_color,
                      focus = awful.client.focus.filter,
                      raise = true,
                      keys = clientkeys,
@@ -596,9 +598,22 @@ client.connect_signal("focus", function(c) c.border_color = beautiful.border_foc
 client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
 -- }}}
 --
+--Gaps
+beautiful.useless_gap = 5
+
+
+--Font
+beautiful.font = "Mononoki Nerd Font 12"
 --
+-- Corner Round
+client.connect_signal("manage", function (c)
+    c.shape = function(cr,w,h)
+        gears.shape.rounded_rect(cr,w,h,0)
+    end
+end)
 --
---
+--Boarder Color
+client.connect_signal("focus", function(c) c.border_color = "#a86cfc" end)
 --
 --
 --
@@ -608,3 +623,4 @@ awful.spawn.with_shell("nitrogen --restore")
 awful.spawn.with_shell("xdman")
 awful.spawn.with_shell("xrdb ~/st/.Xdefaults")
 awful.spawn.with_shell("cmst")
+awful.spawn.with_shell("setxkbmap -layout us,bd -variant ,probhat -option 'grp:lalt_lshift_toggle'")
