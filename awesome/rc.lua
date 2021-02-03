@@ -68,8 +68,8 @@ modkey = "Mod4"
 
 -- Table of layouts to cover with awful.layout.inc, order matters.
 awful.layout.layouts = {
-   -- awful.layout.suit.floating,
     awful.layout.suit.tile,
+    awful.layout.suit.floating,
    -- awful.layout.suit.tile.left,
    -- awful.layout.suit.tile.bottom,
    -- awful.layout.suit.tile.top,
@@ -190,7 +190,9 @@ awful.screen.connect_for_each_screen(function(s)
     set_wallpaper(s)
 
     -- Each screen has its own tag table.
-    awful.tag({ "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", " 刺   " }, s, awful.layout.layouts[1])
+    awful.tag({ "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", " 刺  !!!  " }, s, awful.layout.layouts[1])
+      --awful.tag({ "1", "2", "3", "4", "5", "6", "7", "8", "9    {|}    " }, s, awful.layout.layouts[1])	
+
 
     -- Create a promptbox for each screen
     s.mypromptbox = awful.widget.prompt()
@@ -217,7 +219,7 @@ awful.screen.connect_for_each_screen(function(s)
     }
 
     -- Create the wibox
-    s.mywibox = awful.wibar({ position = "top", screen = s })
+    s.mywibox = awful.wibar({ position = "top", screen = s})
 
     -- Add widgets to the wibox
     s.mywibox:setup {
@@ -344,7 +346,7 @@ globalkeys = gears.table.join(
      
     awful.key({ modkey },            "g",     function () 
     awful.util.spawn("pcmanfm") end,
-               {description = "pcmanfm", group = "applications"}),           
+               {description = "FileManager", group = "applications"}),           
                         
                
                
@@ -613,14 +615,19 @@ client.connect_signal("manage", function (c)
 end)
 --
 --Boarder Color
-client.connect_signal("focus", function(c) c.border_color = "#a86cfc" end)
+client.connect_signal("focus", function(c) c.border_color = "#248f24" end)
+client.connect_signal("unfocus", function(c) c.border_color = "#32302F" end)
+--
+--
 --
 --
 --
 -- --Autostart Applications
 awful.spawn.with_shell("compton")
-awful.spawn.with_shell("nitrogen --restore")
+awful.spawn.with_shell("nitrogen --restore ~/Wallpaper/andrew-coelho-aL7SA1ASVdQ-unsplash.jpg")
 awful.spawn.with_shell("xdman")
 awful.spawn.with_shell("xrdb ~/st/.Xdefaults")
 awful.spawn.with_shell("cmst")
+awful.spawn.with_shell("dunst")
+
 awful.spawn.with_shell("setxkbmap -layout us,bd -variant ,probhat -option 'grp:lalt_lshift_toggle'")
