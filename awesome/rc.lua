@@ -601,7 +601,7 @@ client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_n
 -- }}}
 --
 --Gaps
-beautiful.useless_gap = 5
+beautiful.useless_gap = 3
 
 
 --Font
@@ -619,15 +619,19 @@ client.connect_signal("focus", function(c) c.border_color = "#248f24" end)
 client.connect_signal("unfocus", function(c) c.border_color = "#32302F" end)
 --
 --
---
+
+
+
+
+
 --
 --
 -- --Autostart Applications
 awful.spawn.with_shell("compton")
 awful.spawn.with_shell("nitrogen --restore ~/Wallpaper/andrew-coelho-aL7SA1ASVdQ-unsplash.jpg")
 awful.spawn.with_shell("xdman")
-awful.spawn.with_shell("xrdb ~/st/.Xdefaults")
-awful.spawn.with_shell("cmst")
+awful.spawn.with_shell("xrdb ~/.Xdefaults")
+awful.spawn.with_shell("nm-applet")
 awful.spawn.with_shell("dunst")
 
 awful.spawn.with_shell("setxkbmap -layout us,bd -variant ,probhat -option 'grp:lalt_lshift_toggle'")
