@@ -13,8 +13,8 @@ local awesome_overrides = function(theme)
     theme.dir = os.getenv('HOME') .. '/.config/awesome/theme'
 
     theme.icons = theme.dir .. '/icons/'
-    theme.font = 'Hack nerd font 9'         -- Glyphs don't work properly with this (#442)
-    theme.icon_font = 'Hack nerd font 11'          -- Fira mono patched version
+    theme.font = 'JetBrains Mono Nerd font 9'         -- Glyphs don't work properly with this (#442)
+    theme.icon_font = 'JetBrains Mono Nerd font 11'          -- Fira mono patched version
 
     -- Layout icons
     theme.layout_txt_tile                           = "|舘|"

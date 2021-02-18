@@ -74,20 +74,20 @@ modkey = "Mod4"
 awful.layout.layouts = {
     awful.layout.suit.tile,
     awful.layout.suit.floating,
-   -- awful.layout.suit.tile.left,
-   -- awful.layout.suit.tile.bottom,
-   -- awful.layout.suit.tile.top,
-   -- awful.layout.suit.fair,
-   -- awful.layout.suit.fair.horizontal,
-   -- awful.layout.suit.spiral,
-   -- awful.layout.suit.spiral.dwindle,
-   -- awful.layout.suit.max,
-   -- awful.layout.suit.max.fullscreen,
-   -- awful.layout.suit.magnifier,
-   -- awful.layout.suit.corner.nw,
-    -- awful.layout.suit.corner.ne,
-    -- awful.layout.suit.corner.sw,
-    -- awful.layout.suit.corner.se,
+    --awful.layout.suit.tile.left,
+    --awful.layout.suit.tile.bottom,
+    --awful.layout.suit.tile.top,
+    --awful.layout.suit.fair,
+    --awful.layout.suit.fair.horizontal,
+    --awful.layout.suit.spiral,
+    --awful.layout.suit.spiral.dwindle,
+    --awful.layout.suit.max,
+    --awful.layout.suit.max.fullscreen,
+    --awful.layout.suit.magnifier,
+    --awful.layout.suit.corner.nw,
+    --awful.layout.suit.corner.ne,
+	--awful.layout.suit.corner.sw,
+	--awful.layout.suit.corner.se,
 }
 -- }}}
 
@@ -172,7 +172,7 @@ local tasklist_buttons = gears.table.join(
                                           end),
                      awful.button({ }, 5, function ()
                                               awful.client.focus.byidx(-1)
-                                          end))
+        		                    end))
 
 local function set_wallpaper(s)
     -- Wallpaper
@@ -216,11 +216,11 @@ awful.screen.connect_for_each_screen(function(s)
     }
 
     -- Create a tasklist widget
-    s.mytasklist = awful.widget.tasklist {
-        screen  = s,
-        filter  = awful.widget.tasklist.filter.currenttags,
-        buttons = tasklist_buttons
-    }
+    --s.mytasklist = awful.widget.tasklist {
+      --  screen  = s,
+        --filter  = awful.widget.tasklist.filter.currenttags,
+        --buttons = tasklist_buttons
+    --}
 
     -- Create the wibox
     s.mywibox = awful.wibar({ position = "top", screen = s})
@@ -545,7 +545,7 @@ awful.rules.rules = {
 client.connect_signal("manage", function (c)
     -- Set the windows at the slave,
     -- i.e. put it at the end of others instead of setting it master.
-    -- if not awesome.startup then awful.client.setslave(c) end
+    if not awesome.startup then awful.client.setslave(c) end
 
     if awesome.startup
       and not c.size_hints.user_position
@@ -619,7 +619,8 @@ client.connect_signal("manage", function (c)
 end)
 --
 --Boarder Color
-client.connect_signal("focus", function(c) c.border_color = "#B16286" end)
+--client.connect_signal("focus", function(c) c.border_color = "#B16286" end)
+client.connect_signal("focus", function(c) c.border_color = "#FE8019" end)
 client.connect_signal("unfocus", function(c) c.border_color = "#32302F" end)
 --
 --
@@ -636,6 +637,8 @@ awful.spawn.with_shell("nitrogen --restore ~/Wallpaper/andrew-coelho-aL7SA1ASVdQ
 awful.spawn.with_shell("xdman")
 awful.spawn.with_shell("xrdb ~/.Xdefaults")
 awful.spawn.with_shell("nm-applet")
+--awful.spawn.with_shell("pnmixer")
+awful.spawn.with_shell("bd.sh")
 awful.spawn.with_shell("dunst")
 
 awful.spawn.with_shell("setxkbmap -layout us,bd -variant ,probhat -option 'grp:lalt_lshift_toggle'")

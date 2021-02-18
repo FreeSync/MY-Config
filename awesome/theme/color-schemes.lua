@@ -33,12 +33,12 @@ return {
     },
     gruvbox_material  = {
         primary = {
-            hue_100 = '#212121',
+            hue_100 = '#3C3836',
             hue_200 = '#3c3c3c'
         },
         accent = {
             hue_100 = '#e1be7f',
-            hue_200 = '#B16286',
+            hue_200 = '#FE8019',
             hue_300 = '#66aeea',
             hue_400 = '#f35a5a',
             hue_500 = '#4083bc',
