@@ -1,0 +1,57 @@
+
+#======================================================================
+# CRYSTAL DATA
+#----------------------------------------------------------------------
+data_VESTA_phase_1
+
+_chemical_name_common                  'Ga2 N2'
+_cell_length_a                         16.081451
+_cell_length_b                         16.081451
+_cell_length_c                         5.239962
+_cell_angle_alpha                      90.000000
+_cell_angle_beta                       90.000000
+_cell_angle_gamma                      120.000000
+_cell_volume                           1173.570715
+_space_group_name_H-M_alt              'P 1'
+_space_group_IT_number                 1
+
+loop_
+_space_group_symop_operation_xyz
+   'x, y, z'
+   'x, y+0.2, z'
+   'x, y+0.4, z'
+   'x, y+0.6, z'
+   'x, y+0.8, z'
+   'x+0.2, y, z'
+   'x+0.2, y+0.2, z'
+   'x+0.2, y+0.4, z'
+   'x+0.2, y+0.6, z'
+   'x+0.2, y+0.8, z'
+   'x+0.4, y, z'
+   'x+0.4, y+0.2, z'
+   'x+0.4, y+0.4, z'
+   'x+0.4, y+0.6, z'
+   'x+0.4, y+0.8, z'
+   'x+0.6, y, z'
+   'x+0.6, y+0.2, z'
+   'x+0.6, y+0.4, z'
+   'x+0.6, y+0.6, z'
+   'x+0.6, y+0.8, z'
+   'x+0.8, y, z'
+   'x+0.8, y+0.2, z'
+   'x+0.8, y+0.4, z'
+   'x+0.8, y+0.6, z'
+   'x+0.8, y+0.8, z'
+
+loop_
+   _atom_site_label
+   _atom_site_occupancy
+   _atom_site_fract_x
+   _atom_site_fract_y
+   _atom_site_fract_z
+   _atom_site_adp_type
+   _atom_site_B_iso_or_equiv
+   _atom_site_type_symbol
+   Ga1        1.0     0.133333     0.066667     0.499120    Biso  1.000000 Ga
+   N1         1.0     0.133333     0.066667     0.875880    Biso  1.000000 N
+   N2         1.0     0.066667     0.133333     0.375880    Biso  1.000000 N
